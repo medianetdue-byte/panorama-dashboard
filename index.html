@@ -8,169 +8,104 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-:root {
-  --bg: #0A0A08;
-  --bg2: #111110;
-  --bg3: #1A1A18;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-  --text: #F2F1EE;
-  --text2: #8A8880;
-  --text3: #5A5855;
-  --accent: #E8D5A3;
-  --accent2: #C4A96B;
-  --green: #6FCF97;
-  --green-bg: rgba(111,207,151,0.08);
-  --orange: #F2994A;
-  --orange-bg: rgba(242,153,74,0.08);
-  --blue: #56CCF2;
-  --blue-bg: rgba(86,204,242,0.08);
-  --red: #EB5757;
-}
+:root{--bg:#FAFAF8;--bg2:#FFFFFF;--bg3:#F4F4F1;--border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--text:#1A1A18;--text2:#6A6A68;--text3:#AAAAAA;--accent:#1A3A5C;--accent2:#2E5F8A;--green:#1A7A4A;--green-bg:rgba(26,122,74,0.07);--green-light:#E8F5EE;--orange:#B85C00;--orange-bg:rgba(184,92,0,0.07);--blue:#1A3A5C;--blue-bg:rgba(26,58,92,0.07);--red:#C0392B;--amber:#8A6A00;--amber-bg:rgba(138,106,0,0.07)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
-
-/* HEADER */
-.site-header{
-  border-bottom:1px solid var(--border);
-  padding:18px 32px;
-  display:flex;justify-content:space-between;align-items:center;
-  position:sticky;top:0;z-index:100;
-  background:rgba(10,10,8,0.92);
-  backdrop-filter:blur(12px);
-}
+.site-header{border-bottom:1px solid var(--border);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px)}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-.header-right{display:flex;align-items:center;gap:16px}
+.header-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
 .update-time{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:.05em}
-.days-badge{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);background:rgba(196,169,107,0.1);border:1px solid rgba(196,169,107,0.2);padding:4px 10px;border-radius:4px}
-
-/* LAYOUT */
-.wrap{max-width:1200px;margin:0 auto;padding:32px 24px}
-.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
-
-/* HERO KPI */
-.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px}
-.kpi-card{background:var(--bg2);padding:24px 20px;position:relative;transition:background .2s}
+.days-badge{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--blue-bg);border:1px solid rgba(26,58,92,0.15);padding:4px 10px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding:28px 24px}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.kpi-card{background:var(--bg2);padding:22px 18px;transition:background .2s}
 .kpi-card:hover{background:var(--bg3)}
 .kpi-label{font-size:11px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;font-family:'DM Mono',monospace}
-.kpi-value{font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--text);line-height:1;margin-bottom:6px}
+.kpi-value{font-family:'Syne',sans-serif;font-weight:700;font-size:26px;color:var(--text);line-height:1;margin-bottom:6px}
 .kpi-value.green{color:var(--green)}
 .kpi-value.accent{color:var(--accent)}
 .kpi-delta{font-size:11px;color:var(--text2)}
 .kpi-delta span{color:var(--green);font-weight:500}
 .kpi-sub{font-size:11px;color:var(--text3);margin-top:2px}
-
-/* PROGRESS SECTION */
-.progress-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:28px}
-.progress-title{font-family:'Syne',sans-serif;font-weight:600;font-size:14px;color:var(--text);margin-bottom:20px}
-.prog-row{margin-bottom:18px}
+.progress-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:24px}
+.progress-title{font-family:'Syne',sans-serif;font-weight:600;font-size:14px;color:var(--text);margin-bottom:18px}
+.prog-row{margin-bottom:16px}
 .prog-row:last-child{margin-bottom:0}
-.prog-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.prog-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;flex-wrap:wrap;gap:4px}
 .prog-name{font-size:12px;color:var(--text2)}
 .prog-meta{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3)}
 .prog-pct{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--accent)}
-.track{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;position:relative;overflow:visible}
-.track-fill{height:4px;border-radius:2px;position:relative}
-.track-fill::after{content:'';position:absolute;right:0;top:-3px;width:10px;height:10px;border-radius:50%;transform:translateX(50%)}
-.fill-blue{background:linear-gradient(90deg,#1A3A5C,var(--blue))}
-.fill-blue::after{background:var(--blue);box-shadow:0 0 8px var(--blue)}
-.fill-green{background:linear-gradient(90deg,#1A4D2E,var(--green))}
-.fill-green::after{background:var(--green);box-shadow:0 0 8px var(--green)}
-.fill-grey{background:rgba(255,255,255,0.15)}
-.fill-grey::after{display:none}
-.track-grey{height:2px;background:rgba(255,255,255,0.04);border-radius:2px;margin-top:4px}
-.track-grey-fill{height:2px;border-radius:2px}
-
-/* MILESTONES */
-.milestones{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:20px}
+.track{height:5px;background:var(--bg3);border-radius:3px}
+.track-fill{height:5px;border-radius:3px}
+.fill-blue{background:linear-gradient(90deg,#1A3A5C,#2E80C0)}
+.fill-green{background:linear-gradient(90deg,#1A7A4A,#2ECC71)}
+.track-grey{height:3px;background:#EEEEEA;border-radius:2px;margin-top:4px}
+.track-grey-fill{height:3px;border-radius:2px;background:#CCCCCC}
+.milestones{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:18px}
 .milestone{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
-.ms-period{font-size:10px;color:var(--text3);margin-bottom:4px;font-family:'DM Mono',monospace;letter-spacing:.05em}
-.ms-value{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--text)}
+.ms-period{font-size:10px;color:var(--text3);margin-bottom:4px;font-family:'DM Mono',monospace;letter-spacing:.04em}
+.ms-value{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text)}
 .ms-ticket{font-size:11px;color:var(--text2);margin-top:2px}
-.ms-vs{font-size:10px;color:var(--green);margin-top:2px}
-
-/* GIORNATE */
-.days-section{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
-.day-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px}
-.day-name{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);margin-bottom:12px}
-.day-pct{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;line-height:1;margin-bottom:4px}
-.day-pct.c1{color:var(--blue)}
-.day-pct.c2{color:var(--green)}
-.day-pct.c3{color:var(--orange)}
-.day-presence{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);margin-bottom:14px}
-.day-bar{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;margin-bottom:6px}
+.ms-vs{font-size:10px;color:var(--green);margin-top:2px;font-weight:500}
+.ms-vs.orange{color:var(--orange)}
+.days-section{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.day-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px}
+.day-name{font-family:'Syne',sans-serif;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);margin-bottom:10px}
+.day-pct{font-family:'Syne',sans-serif;font-weight:800;font-size:34px;line-height:1;margin-bottom:4px}
+.day-pct.c1{color:#1A3A5C}.day-pct.c2{color:#1A7A4A}.day-pct.c3{color:#B85C00}
+.day-presence{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);margin-bottom:12px}
+.day-bar{height:3px;background:var(--bg3);border-radius:2px;margin-bottom:4px}
 .day-bar-fill{height:3px;border-radius:2px}
-.day-bar-25{height:2px;background:rgba(255,255,255,0.03);border-radius:2px}
-.day-bar-25-fill{height:2px;border-radius:2px;background:rgba(255,255,255,0.15)}
-.day-delta{font-size:10px;color:var(--green);margin-top:6px}
-.day-ratio{font-size:10px;color:var(--orange);margin-top:4px}
-
-/* CHART */
-.chart-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:28px}
-.chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px}
-.chart-title{font-family:'Syne',sans-serif;font-weight:600;font-size:14px}
+.day-bar-25{height:2px;background:#EEEEEA;border-radius:2px}
+.day-bar-25-fill{height:2px;border-radius:2px;background:#CCCCCC}
+.day-delta{font-size:10px;color:var(--green);margin-top:5px;font-weight:500}
+.day-ratio{font-size:10px;color:var(--orange);margin-top:3px}
+.chart-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:24px}
+.chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:8px}
+.chart-title{font-family:'Syne',sans-serif;font-weight:600;font-size:14px;color:var(--text)}
 .chart-legend{display:flex;gap:16px;font-size:11px;color:var(--text2)}
-.legend-dot{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
-.chart-wrap{position:relative;height:220px}
-
-/* TABLE */
-.table-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px}
-.table-header{padding:18px 20px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-weight:600;font-size:14px}
+.legend-dot{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:middle}
+.chart-wrap{position:relative;height:210px}
+.table-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.table-header{padding:16px 20px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-weight:600;font-size:14px;color:var(--text)}
 .data-table{width:100%;border-collapse:collapse;font-size:11.5px}
-.data-table th{padding:10px 14px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--border);font-weight:400;white-space:nowrap}
+.data-table th{padding:9px 12px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--border);font-weight:400;white-space:nowrap;background:var(--bg3)}
 .data-table th:first-child{text-align:left}
-.data-table td{padding:9px 14px;text-align:right;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap}
-.data-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;color:var(--text)}
+.data-table td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap}
+.data-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;color:var(--text);font-weight:500}
 .data-table tr:last-child td{border-bottom:none}
-.data-table tr.launch-row td{background:rgba(196,169,107,0.05);color:var(--accent2)}
-.data-table tr.launch-row td:first-child{color:var(--accent)}
-.data-table tr.today-row td{background:rgba(111,207,151,0.06);color:var(--green)}
-.data-table tr.today-row td:first-child{color:var(--green);font-weight:500}
-.data-table tr:hover td{background:rgba(255,255,255,0.02)}
-.data-table tfoot td{border-top:1px solid var(--border2);color:var(--accent);font-weight:500;background:rgba(196,169,107,0.04)}
-.tot-badge{font-size:10px;color:var(--text2);font-weight:400;margin-left:4px}
-.sep-row td{background:var(--bg3)!important;color:var(--text3)!important;font-size:10px;padding:5px 14px;font-family:'DM Sans',sans-serif;letter-spacing:.04em;font-style:italic}
-
-/* ABB */
-.abb-section{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
-.abb-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px}
+.data-table tr.launch-row td{background:var(--amber-bg);color:var(--amber)}
+.data-table tr.launch-row td:first-child{color:var(--amber);font-weight:600}
+.data-table tr.today-row td{background:var(--green-bg);color:var(--green)}
+.data-table tr.today-row td:first-child{color:var(--green);font-weight:600}
+.data-table tr:hover:not(.launch-row):not(.today-row):not(.sep-row) td{background:var(--bg3)}
+.data-table tfoot td{border-top:1px solid var(--border2);color:var(--accent);font-weight:500;background:var(--blue-bg)}
+.sep-row td{background:var(--bg3)!important;color:var(--text3)!important;font-size:10px;padding:5px 12px;font-family:'DM Sans',sans-serif;letter-spacing:.03em;font-style:italic}
+.abb-section{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.abb-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px}
 .abb-title{font-family:'Syne',sans-serif;font-weight:600;font-size:13px;margin-bottom:14px;color:var(--text)}
-.abb-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px}
+.abb-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
 .abb-row:last-child{border-bottom:none}
 .abb-name{color:var(--text2)}
-.abb-val{font-family:'DM Mono',monospace;color:var(--text)}
-.abb-total{background:rgba(196,169,107,0.06);border-radius:8px;padding:10px 14px;margin-top:12px;display:flex;justify-content:space-between}
-.abb-total-label{font-size:12px;color:var(--accent2);font-weight:500}
+.abb-val{font-family:'DM Mono',monospace;color:var(--text);font-weight:500}
+.abb-total{background:var(--blue-bg);border-radius:8px;padding:10px 14px;margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+.abb-total-label{font-size:12px;color:var(--accent);font-weight:500}
 .abb-total-val{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--accent)}
-
-/* CANALI */
-.channels-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px}
-.ch-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.channels-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px}
+.ch-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
 .ch-row:last-child{border-bottom:none}
-.ch-name{font-size:12px;color:var(--text2);min-width:80px}
-.ch-bar-wrap{flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px}
+.ch-name{font-size:12px;color:var(--text2);min-width:90px}
+.ch-bar-wrap{flex:1;height:4px;background:var(--bg3);border-radius:2px}
 .ch-bar{height:4px;border-radius:2px}
-.ch-val{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);min-width:55px;text-align:right}
+.ch-val{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);min-width:65px;text-align:right;font-weight:500}
 .ch-pct{font-size:10px;color:var(--text3);min-width:35px;text-align:right}
-
-/* FOOTER */
-.site-footer{border-top:1px solid var(--border);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px}
+.site-footer{border-top:1px solid var(--border);padding:18px 32px;display:flex;justify-content:space-between;align-items:center;margin-top:8px;flex-wrap:wrap;gap:8px;background:var(--bg2)}
 .footer-left{font-size:11px;color:var(--text3)}
 .footer-right{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.05em}
-
-/* RESPONSIVE */
-@media(max-width:700px){
-  .site-header{padding:14px 16px}
-  .wrap{padding:20px 14px}
-  .days-section{grid-template-columns:1fr}
-  .abb-section{grid-template-columns:1fr}
-  .hero-grid{grid-template-columns:1fr 1fr}
-  .kpi-value{font-size:22px}
-  .data-table{font-size:10px}
-  .data-table th,.data-table td{padding:7px 8px}
-}
+@media(max-width:700px){.site-header{padding:12px 16px}.wrap{padding:16px 14px}.days-section{grid-template-columns:1fr}.abb-section{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr 1fr}.kpi-value{font-size:20px}.data-table{font-size:10px}.data-table th,.data-table td{padding:6px 8px}}
 </style>
 </head>
 <body>
@@ -179,335 +114,252 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   <div class="logo">Panorama Festival '26</div>
   <div class="header-right">
     <span class="live-dot"></span>
-    <span class="update-time">Aggiornato: 2 giugno 2026</span>
-    <span class="days-badge">73 giorni al festival</span>
+    <span class="update-time">Aggiornato: 3 giugno 2026</span>
+    <span class="days-badge">72 giorni al festival</span>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- KPI HERO -->
-  <div class="section-label">KPI cumulativi</div>
-  <div class="hero-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Incasso totale</div>
-      <div class="kpi-value accent">€326.443</div>
-      <div class="kpi-delta"><span>+178%</span> vs 2025</div>
-      <div class="kpi-sub">Target: €2.400.000</div>
+<div class="section-label">KPI cumulativi — al 3 giugno 2026</div>
+<div class="hero-grid">
+  <div class="kpi-card">
+    <div class="kpi-label">Incasso totale</div>
+    <div class="kpi-value accent">€333.799</div>
+    <div class="kpi-delta"><span>+178%</span> vs 2025</div>
+    <div class="kpi-sub">Target: €2.400.000</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Ticket venduti</div>
+    <div class="kpi-value green">5.312</div>
+    <div class="kpi-delta"><span>+97%</span> vs 2025 stesso periodo</div>
+    <div class="kpi-sub">Target: 42.000 · mancano 36.688</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Velocità (media 3gg)</div>
+    <div class="kpi-value">136<span style="font-size:14px;font-weight:400;color:var(--text3)">/g</span></div>
+    <div class="kpi-delta">137→154→117 · target 150/g</div>
+    <div class="kpi-sub">Check: sabato 7 giugno</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Prezzo medio</div>
+    <div class="kpi-value">€62,84</div>
+    <div class="kpi-delta"><span>+36%</span> vs 2025 (€46,35)</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Abbonamenti</div>
+    <div class="kpi-value">924</div>
+    <div class="kpi-delta">PM €123,62 · <span>€114.222</span></div>
+    <div class="kpi-sub">Soglia alert: 2.000</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Prossimo spike</div>
+    <div class="kpi-value accent">20 giu</div>
+    <div class="kpi-delta">T2→T3 · lancio <span>18 giu (gio)</span></div>
+    <div class="kpi-sub">Target: ≥1.000 ticket/24h</div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <div class="progress-title">Avanzamento verso obiettivi — 2026 vs 2025 stesso periodo</div>
+  <div class="prog-row">
+    <div class="prog-header">
+      <span class="prog-name">Ticket — 5.312 / 42.000</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="prog-meta">mancano 36.688</span>
+        <span class="prog-pct">12,6%</span>
+      </div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Ticket venduti</div>
-      <div class="kpi-value green">5.195</div>
-      <div class="kpi-delta"><span>+97%</span> vs 2025 stesso periodo</div>
-      <div class="kpi-sub">Target: 42.000 · mancano 36.805</div>
+    <div class="track"><div class="track-fill fill-blue" style="width:12.6%"></div></div>
+    <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:6.3%"></div></div>
+    <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 stesso periodo: ~2.620 ticket (6,3%)</div>
+  </div>
+  <div class="prog-row">
+    <div class="prog-header">
+      <span class="prog-name">Incasso — €334k / €2,4M</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="prog-meta">mancano €2.066k · proiezione €2,46M</span>
+        <span class="prog-pct" style="color:var(--green)">13,9%</span>
+      </div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Velocità (media 3gg)</div>
-      <div class="kpi-value">140<span style="font-size:16px;font-weight:400;color:var(--text3)">/g</span></div>
-      <div class="kpi-delta">130 → 137 → 154 · <span>in salita</span></div>
-      <div class="kpi-sub">Target piano: 192/g (giugno)</div>
+    <div class="track"><div class="track-fill fill-green" style="width:13.9%"></div></div>
+    <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:5.3%"></div></div>
+    <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 stesso periodo: ~€127k (5,3%)</div>
+  </div>
+  <div class="milestones">
+    <div class="milestone">
+      <div class="ms-period">Fine giugno</div>
+      <div class="ms-value">€723k</div>
+      <div class="ms-ticket">~12.400 ticket</div>
+      <div class="ms-vs">2025: €559k · +29%</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Prezzo medio</div>
-      <div class="kpi-value">€62,84</div>
-      <div class="kpi-delta"><span>+36%</span> vs 2025 (€46,35)</div>
+    <div class="milestone">
+      <div class="ms-period">★ Spike 20/6</div>
+      <div class="ms-value">+€53k</div>
+      <div class="ms-ticket">≥1.000 ticket/24h</div>
+      <div class="ms-vs orange">Lancio 18/6</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Abbonamenti</div>
-      <div class="kpi-value">911</div>
-      <div class="kpi-delta">PM €123,60 · <span>€112.597</span></div>
-      <div class="kpi-sub">Soglia alert: 2.000</div>
+    <div class="milestone">
+      <div class="ms-period">Fine luglio</div>
+      <div class="ms-value">€1,54M</div>
+      <div class="ms-ticket">~23.500 ticket</div>
+      <div class="ms-vs">2025: €960k · +60%</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Prossimo spike</div>
-      <div class="kpi-value accent">20 giu</div>
-      <div class="kpi-delta">T2→T3 · lancio <span>18 giu</span></div>
-      <div class="kpi-sub">Target: ≥1.000 ticket/24h</div>
+    <div class="milestone">
+      <div class="ms-period">Fine agosto</div>
+      <div class="ms-value">€2,46M</div>
+      <div class="ms-ticket">~36.000 ticket</div>
+      <div class="ms-vs">2025: €1,25M · +97%</div>
     </div>
   </div>
+</div>
 
-  <!-- AVANZAMENTO -->
-  <div class="progress-section">
-    <div class="progress-title">Avanzamento verso obiettivi — 2026 vs 2025 stesso periodo</div>
+<div class="section-label">Riempimento per giornata — 2026 vs 2025</div>
+<div class="days-section">
+  <div class="day-card">
+    <div class="day-name">Day 1 · 14 agosto</div>
+    <div class="day-pct c1">22,6%</div>
+    <div class="day-presence">3.158 / 14.000 presenze · 2.234 singoli</div>
+    <div class="day-bar"><div class="day-bar-fill" style="width:22.6%;background:#1A3A5C"></div></div>
+    <div class="day-bar-25"><div class="day-bar-25-fill" style="width:9.3%"></div></div>
+    <div class="day-delta">+13,3pp vs 2025 (9,3%)</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">Day 2 · 15 agosto</div>
+    <div class="day-pct c2">17,1%</div>
+    <div class="day-presence">2.391 / 14.000 presenze · 1.467 singoli</div>
+    <div class="day-bar"><div class="day-bar-fill" style="width:17.1%;background:#1A7A4A"></div></div>
+    <div class="day-bar-25"><div class="day-bar-25-fill" style="width:7.1%"></div></div>
+    <div class="day-delta">+10,0pp vs 2025 (7,1%)</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">Day 3 · 16 agosto</div>
+    <div class="day-pct c3">13,7%</div>
+    <div class="day-presence">1.642 / 12.000 presenze · 718 singoli</div>
+    <div class="day-bar"><div class="day-bar-fill" style="width:13.7%;background:#B85C00"></div></div>
+    <div class="day-bar-25"><div class="day-bar-25-fill" style="width:3.5%"></div></div>
+    <div class="day-delta">+10,2pp vs 2025 (3,5%)</div>
+    <div class="day-ratio">ratio D3/D1: 0,321× · target ≥0,50×</div>
+  </div>
+</div>
 
-    <div class="prog-row">
-      <div class="prog-header">
-        <span class="prog-name">Ticket 2026 &mdash; 5.195 / 42.000</span>
-        <div style="display:flex;align-items:center;gap:12px">
-          <span class="prog-meta">mancano 36.805</span>
-          <span class="prog-pct">12,4%</span>
-        </div>
-      </div>
-      <div class="track"><div class="track-fill fill-blue" style="width:12.4%"></div></div>
-      <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:6.1%"></div></div>
-      <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 stesso periodo: ~2.553 ticket (6,1%)</div>
-    </div>
-
-    <div class="prog-row">
-      <div class="prog-header">
-        <span class="prog-name">Incasso 2026 &mdash; €326k / €2,4M</span>
-        <div style="display:flex;align-items:center;gap:12px">
-          <span class="prog-meta">mancano €2.074k · proiezione €2,46M</span>
-          <span class="prog-pct" style="color:var(--green)">13,6%</span>
-        </div>
-      </div>
-      <div class="track"><div class="track-fill fill-green" style="width:13.6%"></div></div>
-      <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:5.1%"></div></div>
-      <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 stesso periodo: ~€122k (5,1%)</div>
-    </div>
-
-    <div class="milestones">
-      <div class="milestone">
-        <div class="ms-period">Fine giugno</div>
-        <div class="ms-value">€723k</div>
-        <div class="ms-ticket">~12.400 ticket</div>
-        <div class="ms-vs">2025: €559k · +29%</div>
-      </div>
-      <div class="milestone">
-        <div class="ms-period">★ Spike 20/6</div>
-        <div class="ms-value">+€53k</div>
-        <div class="ms-ticket">≥1.000 ticket/24h</div>
-        <div class="ms-vs" style="color:var(--orange)">Comunicaz. 18/6</div>
-      </div>
-      <div class="milestone">
-        <div class="ms-period">Fine luglio</div>
-        <div class="ms-value">€1,54M</div>
-        <div class="ms-ticket">~23.500 ticket</div>
-        <div class="ms-vs">2025: €960k · +60%</div>
-      </div>
-      <div class="milestone">
-        <div class="ms-period">Fine agosto</div>
-        <div class="ms-value">€2,46M</div>
-        <div class="ms-ticket">~36.000 ticket</div>
-        <div class="ms-vs">2025: €1,25M · +97%</div>
-      </div>
+<div class="chart-section">
+  <div class="chart-header">
+    <div class="chart-title">Vendite giornaliere — 21 maggio · 3 giugno</div>
+    <div class="chart-legend">
+      <span><span class="legend-dot" style="background:#1A3A5C"></span>2026</span>
+      <span><span class="legend-dot" style="background:#CCCCCC"></span>2025</span>
+      <span><span class="legend-dot" style="background:#C0392B;height:2px;width:14px;vertical-align:middle;border-radius:0"></span>Target 150/g</span>
     </div>
   </div>
+  <div class="chart-wrap">
+    <canvas id="chartMain" role="img" aria-label="Vendite giornaliere dal 21 maggio al 3 giugno 2026 confrontate con 2025"></canvas>
+  </div>
+</div>
 
-  <!-- RIEMPIMENTO -->
-  <div class="section-label">Riempimento per giornata — 2026 vs 2025</div>
-  <div class="days-section">
-    <div class="day-card">
-      <div class="day-name">Day 1 · 14 agosto</div>
-      <div class="day-pct c1">22,1%</div>
-      <div class="day-presence">3.094 / 14.000 presenze · 2.183 singoli</div>
-      <div class="day-bar"><div class="day-bar-fill" style="width:22.1%;background:var(--blue)"></div></div>
-      <div class="day-bar-25"><div class="day-bar-25-fill" style="width:9.3%"></div></div>
-      <div class="day-delta">+12,8pp vs 2025 (9,3%)</div>
-    </div>
-    <div class="day-card">
-      <div class="day-name">Day 2 · 15 agosto</div>
-      <div class="day-pct c2">16,7%</div>
-      <div class="day-presence">2.341 / 14.000 presenze · 1.430 singoli</div>
-      <div class="day-bar"><div class="day-bar-fill" style="width:16.7%;background:var(--green)"></div></div>
-      <div class="day-bar-25"><div class="day-bar-25-fill" style="width:7.1%"></div></div>
-      <div class="day-delta">+9,6pp vs 2025 (7,1%)</div>
-    </div>
-    <div class="day-card">
-      <div class="day-name">Day 3 · 16 agosto</div>
-      <div class="day-pct c3">13,4%</div>
-      <div class="day-presence">1.613 / 12.000 presenze · 702 singoli</div>
-      <div class="day-bar"><div class="day-bar-fill" style="width:13.4%;background:var(--orange)"></div></div>
-      <div class="day-bar-25"><div class="day-bar-25-fill" style="width:3.5%"></div></div>
-      <div class="day-delta">+9,9pp vs 2025 (3,5%)</div>
-      <div class="day-ratio">ratio D3/D1: 0,32× · target ≥0,50×</div>
+<div class="table-section">
+  <div class="table-header">Storico vendite giornaliere</div>
+  <div style="overflow-x:auto">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Data</th><th>TSMS</th><th>FV</th><th>Tot ticket</th>
+        <th>Inc TSMS</th><th>Inc FV</th><th>Inc totale</th>
+        <th>PM</th><th>Cumulativo</th><th>2025 ticket</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="sep-row"><td colspan="10">Lancio — 21-22 maggio</td></tr>
+      <tr class="launch-row"><td>21/05</td><td>1.581</td><td>0</td><td>1.581</td><td>€86.480</td><td>€0</td><td>€86.480</td><td>€54,70</td><td>1.581</td><td>468</td></tr>
+      <tr class="launch-row"><td>22/05</td><td>959</td><td>401</td><td>1.360</td><td>€68.506</td><td>€40.272</td><td>€108.778</td><td>€79,98</td><td>2.941</td><td>939</td></tr>
+      <tr class="sep-row"><td colspan="10">Normalizzazione — 23-31 maggio</td></tr>
+      <tr><td>23/05</td><td>222</td><td>181</td><td>403</td><td>€13.659</td><td>€8.780</td><td>€22.439</td><td>€55,68</td><td>3.344</td><td>207</td></tr>
+      <tr><td>24/05</td><td>187</td><td>87</td><td>274</td><td>€11.031</td><td>€2.718</td><td>€13.749</td><td>€50,18</td><td>3.618</td><td>129</td></tr>
+      <tr><td>25/05</td><td>113</td><td>130</td><td>243</td><td>€5.730</td><td>€7.953</td><td>€13.683</td><td>€56,31</td><td>3.861</td><td>113</td></tr>
+      <tr><td>26/05</td><td>139</td><td>105</td><td>244</td><td>€7.397</td><td>€6.603</td><td>€14.000</td><td>€57,38</td><td>4.105</td><td>99</td></tr>
+      <tr><td>27/05</td><td>126</td><td>97</td><td>223</td><td>€7.286</td><td>€7.114</td><td>€14.400</td><td>€64,57</td><td>4.328</td><td>111</td></tr>
+      <tr><td>28/05</td><td>90</td><td>49</td><td>139</td><td>€5.553</td><td>€2.747</td><td>€8.300</td><td>€59,71</td><td>4.467</td><td>86</td></tr>
+      <tr><td>29/05</td><td>110</td><td>54</td><td>164</td><td>€7.155</td><td>€2.645</td><td>€9.800</td><td>€59,76</td><td>4.631</td><td>132</td></tr>
+      <tr><td>30/05</td><td>83</td><td>60</td><td>143</td><td>€5.946</td><td>€3.454</td><td>€9.400</td><td>€65,73</td><td>4.774</td><td>104</td></tr>
+      <tr><td>31/05</td><td>59</td><td>75</td><td>130</td><td>€3.648</td><td>€3.602</td><td>€7.250</td><td>€55,77</td><td>4.904</td><td>99</td></tr>
+      <tr class="sep-row"><td colspan="10">Giugno — fase esperienziale · target 150/g</td></tr>
+      <tr><td>01/06</td><td>85</td><td>52</td><td>137</td><td>€6.798</td><td>€2.519</td><td>€9.317</td><td>€68,01</td><td>5.041</td><td>66</td></tr>
+      <tr><td>02/06</td><td>87</td><td>67</td><td>154</td><td>€5.765</td><td>€3.082</td><td>€8.847</td><td>€57,45</td><td>5.195</td><td>62</td></tr>
+      <tr class="today-row"><td>03/06 ●</td><td>56</td><td>61</td><td>117</td><td>€4.550</td><td>€2.806</td><td>€7.356</td><td>€62,87</td><td>5.312</td><td>~55</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Totale</td><td>3.897</td><td>1.416</td><td>5.312</td><td>€240.338</td><td>€94.295</td><td>€333.799</td><td>€62,84</td><td>—</td><td>2.703</td></tr>
+    </tfoot>
+  </table>
+  </div>
+</div>
+
+<div class="abb-section">
+  <div class="abb-card">
+    <div class="abb-title">Abbonamenti 3 Days Pass</div>
+    <div class="abb-row"><span class="abb-name">GA T1 · 310 × €105</span><span class="abb-val">€32.550</span></div>
+    <div class="abb-row"><span class="abb-name">GA T2 · 596 × €125 <span style="font-size:10px;color:var(--green)">+13</span></span><span class="abb-val">€74.500</span></div>
+    <div class="abb-row"><span class="abb-name">Backstage T1 · 12 × €370</span><span class="abb-val">€4.440</span></div>
+    <div class="abb-row"><span class="abb-name">Backstage T2 · 6 × €455</span><span class="abb-val">€2.732</span></div>
+    <div class="abb-total">
+      <span class="abb-total-label">924 abb · PM €123,62</span>
+      <span class="abb-total-val">€114.222</span>
     </div>
   </div>
-
-  <!-- CHART -->
-  <div class="chart-section">
-    <div class="chart-header">
-      <div class="chart-title">Vendite giornaliere — 21 maggio · 2 giugno</div>
-      <div class="chart-legend">
-        <span><span class="legend-dot" style="background:var(--accent)"></span>2026</span>
-        <span><span class="legend-dot" style="background:rgba(255,255,255,0.2)"></span>2025</span>
-        <span><span class="legend-dot" style="background:var(--red);border-radius:0;height:2px;width:14px;vertical-align:middle"></span>Target 80/g</span>
-      </div>
+  <div class="channels-card">
+    <div class="abb-title">Incasso per canale</div>
+    <div class="ch-row">
+      <span class="ch-name">TSMS singoli</span>
+      <div class="ch-bar-wrap"><div class="ch-bar" style="width:72%;background:#1A3A5C"></div></div>
+      <span class="ch-val">€240.338</span><span class="ch-pct">72,0%</span>
     </div>
-    <div class="chart-wrap">
-      <canvas id="chartMain" role="img" aria-label="Vendite giornaliere dal 21 maggio al 2 giugno 2026 confrontate con 2025"></canvas>
+    <div class="ch-row">
+      <span class="ch-name">TSMS abb.</span>
+      <div class="ch-bar-wrap"><div class="ch-bar" style="width:34%;background:#2E5F8A"></div></div>
+      <span class="ch-val">€114.222</span><span class="ch-pct">34,2%</span>
     </div>
-  </div>
-
-  <!-- TABELLA STORICO -->
-  <div class="table-section">
-    <div class="table-header">Storico vendite giornaliere</div>
-    <div style="overflow-x:auto">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Data</th>
-          <th>TSMS</th>
-          <th>FV</th>
-          <th>Tot ticket</th>
-          <th>Inc TSMS</th>
-          <th>Inc FV</th>
-          <th>Inc totale</th>
-          <th>PM</th>
-          <th>Cumulativo</th>
-          <th>2025 ticket</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="sep-row"><td colspan="10">Lancio — 21-22 maggio</td></tr>
-        <tr class="launch-row">
-          <td>21/05</td><td>1.581</td><td>0</td><td>1.581</td>
-          <td>€86.480</td><td>€0</td><td>€86.480</td><td>€54,70</td><td>1.581</td><td>468</td>
-        </tr>
-        <tr class="launch-row">
-          <td>22/05</td><td>959</td><td>401</td><td>1.360</td>
-          <td>€68.506</td><td>€40.272</td><td>€108.778</td><td>€79,98</td><td>2.941</td><td>939</td>
-        </tr>
-        <tr class="sep-row"><td colspan="10">Normalizzazione — 23-31 maggio</td></tr>
-        <tr><td>23/05</td><td>222</td><td>181</td><td>403</td><td>€13.659</td><td>€8.780</td><td>€22.439</td><td>€55,68</td><td>3.344</td><td>207</td></tr>
-        <tr><td>24/05</td><td>187</td><td>87</td><td>274</td><td>€11.031</td><td>€2.718</td><td>€13.749</td><td>€50,18</td><td>3.618</td><td>129</td></tr>
-        <tr><td>25/05</td><td>113</td><td>130</td><td>243</td><td>€5.730</td><td>€7.953</td><td>€13.683</td><td>€56,31</td><td>3.861</td><td>113</td></tr>
-        <tr><td>26/05</td><td>139</td><td>105</td><td>244</td><td>€7.397</td><td>€6.603</td><td>€14.000</td><td>€57,38</td><td>4.105</td><td>99</td></tr>
-        <tr><td>27/05</td><td>126</td><td>97</td><td>223</td><td>€7.286</td><td>€7.114</td><td>€14.400</td><td>€64,57</td><td>4.328</td><td>111</td></tr>
-        <tr><td>28/05</td><td>90</td><td>49</td><td>139</td><td>€5.553</td><td>€2.747</td><td>€8.300</td><td>€59,71</td><td>4.467</td><td>86</td></tr>
-        <tr><td>29/05</td><td>110</td><td>54</td><td>164</td><td>€7.155</td><td>€2.645</td><td>€9.800</td><td>€59,76</td><td>4.631</td><td>132</td></tr>
-        <tr><td>30/05</td><td>83</td><td>60</td><td>143</td><td>€5.946</td><td>€3.454</td><td>€9.400</td><td>€65,73</td><td>4.774</td><td>104</td></tr>
-        <tr><td>31/05</td><td>59</td><td>75</td><td>130</td><td>€3.648</td><td>€3.602</td><td>€7.250</td><td>€55,77</td><td>4.904</td><td>99</td></tr>
-        <tr class="sep-row"><td colspan="10">Giugno — fase esperienziale · target 150/g</td></tr>
-        <tr><td>01/06</td><td>85</td><td>52</td><td>137</td><td>€6.798</td><td>€2.519</td><td>€9.317</td><td>€68,01</td><td>5.041</td><td>66</td></tr>
-        <tr class="today-row">
-          <td>02/06 ●</td><td>87</td><td>67</td><td>154</td>
-          <td>€5.765</td><td>€3.082</td><td>€8.847</td><td>€57,45</td><td>5.195</td><td>~62</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Totale</td><td>3.841</td><td>1.358</td><td>5.195</td>
-          <td>€235.788</td><td>€91.489</td><td>€326.443</td><td>€62,84</td><td>—</td><td>2.648</td>
-        </tr>
-      </tfoot>
-    </table>
+    <div class="ch-row">
+      <span class="ch-name">FV (sito)</span>
+      <div class="ch-bar-wrap"><div class="ch-bar" style="width:28%;background:#1A7A4A"></div></div>
+      <span class="ch-val">€94.295</span><span class="ch-pct">28,2%</span>
+    </div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:10px;color:var(--text3);line-height:1.6">
+      FV = traffico organico puro · zero paid attivo a maggio<br>
+      Gli abbonamenti incidono su tutti i canali cumulativi
     </div>
   </div>
-
-  <!-- ABB + CANALI -->
-  <div class="abb-section">
-    <div class="abb-card">
-      <div class="abb-title">Abbonamenti 3 Days Pass</div>
-      <div class="abb-row"><span class="abb-name">GA T1 · 310 × €105</span><span class="abb-val">€32.550</span></div>
-      <div class="abb-row"><span class="abb-name">GA T2 · 583 × €125</span><span class="abb-val">€72.875</span></div>
-      <div class="abb-row"><span class="abb-name">Backstage T1 · 12 × €370</span><span class="abb-val">€4.440</span></div>
-      <div class="abb-row"><span class="abb-name">Backstage T2 · 6 × €455</span><span class="abb-val">€2.732</span></div>
-      <div class="abb-total">
-        <span class="abb-total-label">911 abb · PM €123,60</span>
-        <span class="abb-total-val">€112.597</span>
-      </div>
-    </div>
-    <div class="channels-card">
-      <div class="abb-title" style="margin-bottom:14px">Incasso per canale</div>
-      <div class="ch-row">
-        <span class="ch-name">TSMS singoli</span>
-        <div class="ch-bar-wrap"><div class="ch-bar" style="width:72%;background:var(--blue)"></div></div>
-        <span class="ch-val">€235.788</span>
-        <span class="ch-pct">72,2%</span>
-      </div>
-      <div class="ch-row">
-        <span class="ch-name">TSMS abb.</span>
-        <div class="ch-bar-wrap"><div class="ch-bar" style="width:34%;background:var(--accent)"></div></div>
-        <span class="ch-val">€112.597</span>
-        <span class="ch-pct">34,5%</span>
-      </div>
-      <div class="ch-row">
-        <span class="ch-name">FV (sito)</span>
-        <div class="ch-bar-wrap"><div class="ch-bar" style="width:28%;background:var(--green)"></div></div>
-        <span class="ch-val">€91.489</span>
-        <span class="ch-pct">28,0%</span>
-      </div>
-      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:10px;color:var(--text3)">
-        FV = traffico organico puro · zero paid attivo a maggio<br>
-        Gli abbonamenti incidono su tutti i canali cumulativi
-      </div>
-    </div>
-  </div>
+</div>
 
 </div>
 
 <footer class="site-footer">
   <div class="footer-left">Panorama Festival 2026 · Cave del Duca · Lecce · 14-15-16 agosto</div>
-  <div class="footer-right">DATI AL 2 GIUGNO 2026</div>
+  <div class="footer-right">DATI AL 3 GIUGNO 2026</div>
 </footer>
 
 <script>
-const labels = ['21/5','22/5','23/5','24/5','25/5','26/5','27/5','28/5','29/5','30/5','31/5','1/6','2/6'];
-const d26 = [1581,1360,403,274,243,244,223,139,164,143,130,137,154];
-const d25 = [468,939,207,129,113,99,111,86,132,104,99,66,62];
-
-const ctx = document.getElementById('chartMain').getContext('2d');
-new Chart(ctx, {
-  data: {
-    labels,
-    datasets: [
-      {
-        type: 'bar',
-        label: '2025',
-        data: d25,
-        backgroundColor: 'rgba(255,255,255,0.07)',
-        borderRadius: 3,
-        borderWidth: 0,
-        order: 2
-      },
-      {
-        type: 'bar',
-        label: '2026',
-        data: d26,
-        backgroundColor: d26.map((v,i) => {
-          if(i < 2) return 'rgba(196,169,107,0.7)';
-          if(i === 12) return 'rgba(111,207,151,0.8)';
-          return 'rgba(196,169,107,0.4)';
-        }),
-        borderRadius: 3,
-        borderWidth: 0,
-        order: 1
-      },
-      {
-        type: 'line',
-        label: 'Target 80/g',
-        data: Array(13).fill(80),
-        borderColor: 'rgba(235,87,87,0.5)',
-        borderDash: [4,4],
-        borderWidth: 1.5,
-        pointRadius: 0,
-        fill: false,
-        order: 0
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    interaction: { mode: 'index', intersect: false },
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        backgroundColor: 'rgba(17,17,16,0.95)',
-        borderColor: 'rgba(255,255,255,0.08)',
-        borderWidth: 1,
-        titleColor: '#F2F1EE',
-        bodyColor: '#8A8880',
-        padding: 10,
-        callbacks: {
-          label: c => `${c.dataset.label}: ${c.parsed.y} ticket`
-        }
-      }
-    },
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: { color: 'rgba(255,255,255,0.25)', font: { size: 10, family: 'DM Mono' } },
-        border: { color: 'rgba(255,255,255,0.06)' }
-      },
-      y: {
-        grid: { color: 'rgba(255,255,255,0.04)' },
-        ticks: { color: 'rgba(255,255,255,0.25)', font: { size: 10, family: 'DM Mono' } },
-        border: { color: 'transparent' }
-      }
-    }
-  }
+const labels=['21/5','22/5','23/5','24/5','25/5','26/5','27/5','28/5','29/5','30/5','31/5','1/6','2/6','3/6'];
+const d26=[1581,1360,403,274,243,244,223,139,164,143,130,137,154,117];
+const d25=[468,939,207,129,113,99,111,86,132,104,99,66,62,55];
+new Chart(document.getElementById('chartMain').getContext('2d'),{
+  data:{labels,datasets:[
+    {type:'bar',label:'2025',data:d25,backgroundColor:'rgba(0,0,0,0.07)',borderRadius:3,borderWidth:0,order:2},
+    {type:'bar',label:'2026',data:d26,
+      backgroundColor:d26.map((v,i)=>i<2?'rgba(26,58,92,0.85)':i===13?'rgba(26,122,74,0.85)':'rgba(26,58,92,0.45)'),
+      borderRadius:3,borderWidth:0,order:1},
+    {type:'line',label:'Target 150/g',data:Array(14).fill(150),
+      borderColor:'rgba(192,57,43,0.4)',borderDash:[4,4],borderWidth:1.5,pointRadius:0,fill:false,order:0}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},
+      tooltip:{backgroundColor:'rgba(255,255,255,0.98)',borderColor:'rgba(0,0,0,0.08)',borderWidth:1,
+        titleColor:'#1A1A18',bodyColor:'#6A6A68',padding:10,
+        callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y} ticket`}}},
+    scales:{
+      x:{grid:{display:false},ticks:{color:'#AAAAAA',font:{size:10,family:'DM Mono'}},border:{color:'rgba(0,0,0,0.06)'}},
+      y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#AAAAAA',font:{size:10,family:'DM Mono'}},border:{color:'transparent'}}
+    }}
 });
 </script>
 </body>
