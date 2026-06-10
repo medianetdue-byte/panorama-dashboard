@@ -376,7 +376,7 @@ new Chart(document.getElementById('chartMain').getContext('2d'),{
         titleColor:'#1A1A18',bodyColor:'#6A6A68',padding:10,
         callbacks:{
           label:c=>`${c.dataset.label}: ${c.parsed.y}`,
-          afterBody:(items)=>[`Tot singoli: ${items.reduce((a,b)=>a+(b.raw||0),0)}`]
+          afterBody:(items)=>[`Tot singoli: ${items.filter(i=>i.dataset.type!=='line').reduce((a,b)=>a+(b.raw||0),0)}`]
         }}},
     scales:{
       x:{grid:{display:false},ticks:{color:'#AAAAAA',font:{size:10,family:'DM Mono'}},border:{color:'rgba(0,0,0,0.06)'},stacked:true},
