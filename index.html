@@ -193,7 +193,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   <div class="progress-title">Avanzamento verso obiettivi</div>
   <div class="prog-row">
     <div class="prog-header">
-      <span class="prog-name">Abbonamenti — 966 / 2.426 · obiettivo €300k</span>
+      <span class="prog-name">Abbonamenti — 1.002 / 2.426 · obiettivo €300k</span>
       <div style="display:flex;align-items:center;gap:12px"><span class="prog-meta">mancano 1.424 abb · €176k</span><span class="prog-pct" style="color:var(--orange)">41,3%</span></div>
     </div>
     <div class="track"><div class="track-fill fill-orange" style="width:41.3%"></div></div>
@@ -265,7 +265,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <div class="chart-legend">
       <span><span class="legend-dot" style="background:#1A3A5C"></span>TSMS singoli</span>
       <span><span class="legend-dot" style="background:#1A7A4A"></span>FV</span>
-      <span><span class="legend-dot" style="background:#C0392B;height:2px;width:14px;vertical-align:middle;border-radius:0"></span>Target 150/g</span>
     </div>
   </div>
   <div class="chart-wrap"><canvas id="chartMain"></canvas></div>
@@ -375,7 +374,7 @@ new Chart(document.getElementById('chartMain').getContext('2d'),{
       tooltip:{backgroundColor:'rgba(255,255,255,0.98)',borderColor:'rgba(0,0,0,0.08)',borderWidth:1,
         titleColor:'#1A1A18',bodyColor:'#6A6A68',padding:10,
         callbacks:{
-          label:c=>`${c.dataset.label}: ${c.parsed.y}`,
+          label:c=>c.dataset.label==='Target 150/g'?null:`${c.dataset.label}: ${c.parsed.y}`,
           afterBody:(items)=>[`Tot singoli: ${items.filter(i=>i.dataset.type!=='line').reduce((a,b)=>a+(b.raw||0),0)}`]
         }}},
     scales:{
