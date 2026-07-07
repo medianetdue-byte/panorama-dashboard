@@ -182,6 +182,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .mc-empty{color:var(--text3)!important;font-weight:400!important}
 .mc-2025{color:#3B9BD6!important;font-weight:600}
 .mc-est{font-style:italic;opacity:0.75}
+.mc-prog{display:block;font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);font-weight:400;font-style:normal;margin-top:2px;letter-spacing:0}
 .month-legend{font-size:10px;color:var(--text3);margin:-16px 0 6px;padding:0 2px;font-family:'DM Sans',sans-serif}
 .month-legend b{color:#3B9BD6;font-weight:600}
 .month-foot{font-size:11px;color:var(--text3);margin:-14px 0 24px;padding:0 2px;font-family:'DM Sans',sans-serif}
@@ -210,7 +211,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   </div>
   <div class="update-banner-right">
     <div class="update-banner-metric">11.307 ticket · €695.982</div>
-    <div class="update-banner-sub">39 giorni · +14% vs 2025 · 5/7 riconciliato · dati alle 23:59</div>
+    <div class="update-banner-sub">39 giorni · +13% vs 2025 · storico 2025 reale integrato</div>
   </div>
 </div>
 
@@ -220,7 +221,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   <div class="kpi-card">
     <div class="kpi-label">Incasso totale</div>
     <div class="kpi-value accent">€695.982</div>
-    <div class="kpi-delta"><span>+52%</span> vs 2025 (€458k stesso periodo)</div>
+    <div class="kpi-delta"><span>+46%</span> vs 2025 (€475k stesso periodo)</div>
     <div class="kpi-sub">Target: €2.400.000 · 29,0%</div>
   </div>
   <div class="kpi-card">
@@ -232,7 +233,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   <div class="kpi-card">
     <div class="kpi-label">PM cumulativo</div>
     <div class="kpi-value">€61,55</div>
-    <div class="kpi-delta"><span>+33%</span> vs 2025 (€46,33 stesso periodo)</div>
+    <div class="kpi-delta"><span>+30%</span> vs 2025 (€47,50 stesso periodo)</div>
     <div class="kpi-sub">€695.982 / 11.307 ticket tot</div>
   </div>
   <div class="kpi-card">
@@ -285,14 +286,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Incasso totale</div>
       <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:5px">
         <span style="font-family:'DM Sans',sans-serif;font-weight:800;font-size:23px;color:var(--accent)">€695.982</span>
-        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+52%</span>
+        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+46%</span>
       </div>
-      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs €458.000 (2025)</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs €475.075 (2025)</div>
       <div style="position:relative;height:7px;background:var(--bg3);border-radius:4px;margin-bottom:4px">
         <div style="position:absolute;left:0;top:0;height:7px;width:100%;background:var(--accent);border-radius:4px;opacity:0.85"></div>
       </div>
       <div style="position:relative;height:5px;background:var(--bg3);border-radius:4px">
-        <div style="position:absolute;left:0;top:0;height:5px;width:66%;background:#BBBBBB;border-radius:4px"></div>
+        <div style="position:absolute;left:0;top:0;height:5px;width:68%;background:#BBBBBB;border-radius:4px"></div>
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:5px">
         <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--accent);font-weight:500">2026</span>
@@ -303,14 +304,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Ticket venduti</div>
       <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:5px">
         <span style="font-family:'DM Sans',sans-serif;font-weight:800;font-size:23px;color:var(--green)">11.307</span>
-        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+14%</span>
+        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+13%</span>
       </div>
-      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs 9.885 (2025)</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs 10.001 (2025)</div>
       <div style="position:relative;height:7px;background:var(--bg3);border-radius:4px;margin-bottom:4px">
         <div style="position:absolute;left:0;top:0;height:7px;width:100%;background:var(--green);border-radius:4px;opacity:0.85"></div>
       </div>
       <div style="position:relative;height:5px;background:var(--bg3);border-radius:4px">
-        <div style="position:absolute;left:0;top:0;height:5px;width:87%;background:#BBBBBB;border-radius:4px"></div>
+        <div style="position:absolute;left:0;top:0;height:5px;width:88%;background:#BBBBBB;border-radius:4px"></div>
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:5px">
         <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--green);font-weight:500">2026</span>
@@ -339,14 +340,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Presenze 3 giornate</div>
       <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:5px">
         <span style="font-family:'DM Sans',sans-serif;font-weight:800;font-size:23px;color:#1A3A5C">14.077</span>
-        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+24%</span>
+        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+23%</span>
       </div>
-      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs 11.325 (2025)</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs 11.441 (2025)</div>
       <div style="position:relative;height:7px;background:var(--bg3);border-radius:4px;margin-bottom:4px">
         <div style="position:absolute;left:0;top:0;height:7px;width:100%;background:#1A3A5C;border-radius:4px;opacity:0.85"></div>
       </div>
       <div style="position:relative;height:5px;background:var(--bg3);border-radius:4px">
-        <div style="position:absolute;left:0;top:0;height:5px;width:80%;background:#BBBBBB;border-radius:4px"></div>
+        <div style="position:absolute;left:0;top:0;height:5px;width:81%;background:#BBBBBB;border-radius:4px"></div>
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:5px">
         <span style="font-family:'DM Mono',monospace;font-size:9px;color:#1A3A5C;font-weight:500">2026</span>
@@ -357,14 +358,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Prezzo medio</div>
       <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:5px">
         <span style="font-family:'DM Sans',sans-serif;font-weight:800;font-size:23px;color:var(--accent)">€61,55</span>
-        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+33%</span>
+        <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:var(--green);background:rgba(26,122,74,0.1);padding:2px 6px;border-radius:4px">+30%</span>
       </div>
-      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs €46,33 (2025)</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--text3);margin-bottom:12px">vs €47,50 (2025)</div>
       <div style="position:relative;height:7px;background:var(--bg3);border-radius:4px;margin-bottom:4px">
         <div style="position:absolute;left:0;top:0;height:7px;width:100%;background:var(--accent);border-radius:4px;opacity:0.85"></div>
       </div>
       <div style="position:relative;height:5px;background:var(--bg3);border-radius:4px">
-        <div style="position:absolute;left:0;top:0;height:5px;width:75%;background:#BBBBBB;border-radius:4px"></div>
+        <div style="position:absolute;left:0;top:0;height:5px;width:77%;background:#BBBBBB;border-radius:4px"></div>
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:5px">
         <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--accent);font-weight:500">2026</span>
@@ -376,11 +377,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   <div class="comp-strip" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--bg3)">
     <div style="padding:14px 20px;border-right:1px solid var(--border)">
       <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:4px">INCASSO 2025 (6/7)</div>
-      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--text2)">€458.000</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--text2)">€475.075</div>
     </div>
     <div style="padding:14px 20px;border-right:1px solid var(--border)">
       <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:4px">TICKET 2025 (6/7)</div>
-      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--text2)">9.885 · di cui 720 abb</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--text2)">10.001 · di cui 720 abb</div>
     </div>
     <div style="padding:14px 20px;border-right:1px solid var(--border)">
       <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:4px">ABBONAMENTI 2025 (totale stagione)</div>
@@ -388,7 +389,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     </div>
     <div style="padding:14px 20px">
       <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:4px">PM 2025 · INCASSO FINALE 2025</div>
-      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--text2)">€46,33 · €2.344.454 (44.333 tk)</div>
+      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--text2)">€47,50 · €2.344.454 (44.333 tk)</div>
     </div>
   </div>
 
@@ -396,24 +397,24 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 <!-- SPECCHIETTO TICKET PER MESE -->
 <div class="section-label">Ticket venduti per mese — 2025 vs 2026</div>
-<div class="month-legend"><b>Blu = 2025</b> · settimane luglio 2025 (~ = stima da checkpoint, riferimento) · non incluse nel totale 2025 (9.885 = cumulato al 6/7; post-4/7 stimato ~185/g)</div>
+<div class="month-legend"><b>Blu = 2025</b> · dati reali completi (storico ufficiale 2025) · sotto ogni valore: <b style="color:var(--text3)">→ progressivo</b> cumulato a fine periodo</div>
 <div class="month-box">
   <div class="month-row month-head">
-    <span class="mc-name">Mese</span>
+    <span class="mc-name">Periodo</span>
     <span class="month-cell">2025</span>
     <span class="month-cell">2026</span>
     <span class="month-cell mc-delta">Δ YoY</span>
   </div>
   <div class="month-row">
     <span class="mc-name">Maggio<span class="month-sub">21–31/5</span></span>
-    <span class="month-cell">2.487</span>
-    <span class="month-cell mc-2026">5.068</span>
+    <span class="month-cell">2.487<span class="mc-prog">→ 2.487</span></span>
+    <span class="month-cell mc-2026">5.068<span class="mc-prog">→ 5.068</span></span>
     <span class="month-cell mc-delta pos">+104%</span>
   </div>
   <div class="month-row">
-    <span class="mc-name">Giugno<span class="month-sub">1–30/6</span></span>
-    <span class="month-cell">6.308</span>
-    <span class="month-cell mc-2026">5.226</span>
+    <span class="mc-name">Giugno<span class="month-sub">1–30/6 · spike '25: 30/6 +1.278</span></span>
+    <span class="month-cell">6.308<span class="mc-prog">→ 8.795</span></span>
+    <span class="month-cell mc-2026">5.226<span class="mc-prog">→ 10.294</span></span>
     <span class="month-cell mc-delta neg">−17%</span>
   </div>
   <div class="month-row month-subhead">
@@ -423,43 +424,67 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <span class="month-cell"></span>
   </div>
   <div class="month-row month-week">
-    <span class="mc-name">Sett 1<span class="month-sub">1–7/7 · parz. 1–6/7</span></span>
-    <span class="month-cell mc-2025">1.090</span>
-    <span class="month-cell mc-2026">1.013</span>
-    <span class="month-cell mc-delta neg">−7%</span>
+    <span class="mc-name">Sett 1<span class="month-sub">1–7/7 · Δ su parziale 1–6/7 (1.206 vs 1.013)</span></span>
+    <span class="month-cell mc-2025">1.417<span class="mc-prog">→ 10.212</span></span>
+    <span class="month-cell mc-2026">1.013<span class="mc-prog">→ 11.307</span></span>
+    <span class="month-cell mc-delta neg">−16%</span>
   </div>
   <div class="month-row month-week">
     <span class="mc-name">Sett 2<span class="month-sub">8–14/7</span></span>
-    <span class="month-cell mc-2025 mc-est">~2.496</span>
+    <span class="month-cell mc-2025">2.579<span class="mc-prog">→ 12.791</span></span>
     <span class="month-cell mc-empty">—</span>
     <span class="month-cell mc-empty">—</span>
   </div>
   <div class="month-row month-week">
-    <span class="mc-name">Sett 3<span class="month-sub">15–21/7 · spike 19–21</span></span>
-    <span class="month-cell mc-2025 mc-est">~4.662</span>
+    <span class="mc-name">Sett 3<span class="month-sub">15–21/7 · spike '25: 17/7 +1.015 · spike '26 atteso 19–21</span></span>
+    <span class="month-cell mc-2025">3.645<span class="mc-prog">→ 16.436</span></span>
     <span class="month-cell mc-empty">—</span>
     <span class="month-cell mc-empty">—</span>
   </div>
   <div class="month-row month-week">
     <span class="mc-name">Sett 4<span class="month-sub">22–28/7</span></span>
-    <span class="month-cell mc-2025 mc-est">~7.550</span>
+    <span class="month-cell mc-2025">4.208<span class="mc-prog">→ 20.644</span></span>
     <span class="month-cell mc-empty">—</span>
     <span class="month-cell mc-empty">—</span>
   </div>
   <div class="month-row month-week">
-    <span class="mc-name">Sett 5<span class="month-sub">29–31/7</span></span>
-    <span class="month-cell mc-2025 mc-est">~3.235</span>
+    <span class="mc-name">Sett 5<span class="month-sub">29–31/7 · rampa: 889 · 1.208 · 1.071</span></span>
+    <span class="month-cell mc-2025">3.168<span class="mc-prog">→ 23.812</span></span>
+    <span class="month-cell mc-empty">—</span>
+    <span class="month-cell mc-empty">—</span>
+  </div>
+  <div class="month-row month-subhead">
+    <span class="mc-name">Agosto — per settimana</span>
+    <span class="month-cell"></span>
+    <span class="month-cell"></span>
+    <span class="month-cell"></span>
+  </div>
+  <div class="month-row month-week">
+    <span class="mc-name">Sett 1<span class="month-sub">1–7/8 · media 1.267/g · T5 '26 dall'1/8</span></span>
+    <span class="month-cell mc-2025">8.867<span class="mc-prog">→ 32.679</span></span>
+    <span class="month-cell mc-empty">—</span>
+    <span class="month-cell mc-empty">—</span>
+  </div>
+  <div class="month-row month-week">
+    <span class="mc-name">Sett 2<span class="month-sub">8–14/8 · max '25: 8/8 +1.649 · Final '26 dal 10/8</span></span>
+    <span class="month-cell mc-2025">7.825<span class="mc-prog">→ 40.504</span></span>
+    <span class="month-cell mc-empty">—</span>
+    <span class="month-cell mc-empty">—</span>
+  </div>
+  <div class="month-row month-week">
+    <span class="mc-name">Coda festival<span class="month-sub">15–17/8 ('25) · festival '26: 14–16/8</span></span>
+    <span class="month-cell mc-2025">3.829<span class="mc-prog">→ 44.333</span></span>
     <span class="month-cell mc-empty">—</span>
     <span class="month-cell mc-empty">—</span>
   </div>
   <div class="month-row month-total">
-    <span class="mc-name">Totale</span>
-    <span class="month-cell">9.885</span>
+    <span class="mc-name">Totale al 6/7</span>
+    <span class="month-cell">10.001</span>
     <span class="month-cell mc-2026">11.307</span>
-    <span class="month-cell mc-delta pos">+14%</span>
+    <span class="month-cell mc-delta pos">+13%</span>
   </div>
 </div>
-<div class="month-foot">Venduto per periodo da cumulativi. Maggio 2026 = lancio potente (+104%); a giugno il 2025 ha venduto di più grazie allo spike del 30/6. Sett 1 = confronto reale parziale (primi 6 giorni, 2025 e 2026). Sett 2–5: il 2025 (blu, ~) è stima interpolata dai checkpoint reali 2025 (30/6, 18/7, finale) — riferimento, non ancora dato certo, da correggere coi dati veri. Le stime NON sono sommate al totale 2025. Sett 3–5 poco affidabili (dipendono dallo spike prezzi 2025). Spike 2026 previsto 19–21/7.</div>
+<div class="month-foot">Ogni cella: <b>venduto nel periodo</b> + <b>→ progressivo</b> a fine periodo. Tutti i valori 2025 sono ora REALI (storico ufficiale giornaliero). Pattern 2025: luglio cresce gradualmente (S2 2.579 → S4 4.208), poi accelerazione violenta dal 29/7 e plateau altissimo per tutto agosto (1.100–1.300/g): <b>agosto da solo = 20.521 ticket, il 46% della stagione</b>; dal 19/7 alla fine = 66%. Il vantaggio 2026 (+13%) va difeso proprio in quella finestra. Δ Sett 1 luglio calcolato su parziale omogeneo 1–6/7. Spike 2026 previsto 19–21/7 (cambio T4).</div>
 
 <!-- TIER PREZZI -->
 <div class="section-label">Struttura tier — prezzi e scadenze</div>
@@ -513,8 +538,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
       <div style="display:flex;align-items:center;gap:12px"><span class="prog-meta">mancano 30.693</span><span class="prog-pct">26,9%</span></div>
     </div>
     <div class="track"><div class="track-fill fill-blue" style="width:26.9%"></div></div>
-    <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:23.5%"></div></div>
-    <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 al 6/7: 9.885 ticket (22,3%) · +14% YoY</div>
+    <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:23.8%"></div></div>
+    <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 al 6/7: 10.001 ticket (22,6%) · +13% YoY</div>
   </div>
   <div class="prog-row">
     <div class="prog-header">
@@ -522,12 +547,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
       <div style="display:flex;align-items:center;gap:12px"><span class="prog-meta">mancano €1.704k · proiezione on track</span><span class="prog-pct" style="color:var(--green)">29,0%</span></div>
     </div>
     <div class="track"><div class="track-fill fill-green" style="width:29.0%"></div></div>
-    <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:19.1%"></div></div>
-    <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 stesso periodo (6/7): €458k (19,5% del finale)</div>
+    <div class="track-grey" style="margin-top:5px"><div class="track-grey-fill" style="width:19.8%"></div></div>
+    <div style="font-size:10px;color:var(--text3);margin-top:3px">2025 stesso periodo (6/7): €475k (20,3% del finale)</div>
   </div>
   <div class="milestones">
-    <div class="milestone"><div class="ms-period">Oggi (6/7)</div><div class="ms-value">€696k</div><div class="ms-ticket">11.307 ticket</div><div class="ms-vs">2025: €458k · +52%</div></div>
-    <div class="milestone"><div class="ms-period">★ Spike 30/6 (2025)</div><div class="ms-value">+1.278</div><div class="ms-ticket">benchmark da battere</div><div class="ms-vs orange">il picco storico 2025</div></div>
+    <div class="milestone"><div class="ms-period">Oggi (6/7)</div><div class="ms-value">€696k</div><div class="ms-ticket">11.307 ticket</div><div class="ms-vs">2025: €475k · +46%</div></div>
+    <div class="milestone"><div class="ms-period">★ Spike 30/6 (2025)</div><div class="ms-value">+1.278</div><div class="ms-ticket">benchmark cambio tier</div><div class="ms-vs orange">max assoluto '25: +1.649 (8/8)</div></div>
     <div class="milestone"><div class="ms-period">Fine giugno 2025</div><div class="ms-value">€408k</div><div class="ms-ticket">8.795 ticket</div><div class="ms-vs">2026 sopra: +17% tk</div></div>
     <div class="milestone"><div class="ms-period">Finale 2025</div><div class="ms-value">€2,34M</div><div class="ms-ticket">44.333 ticket</div><div class="ms-vs">2026 target: €2,4M / 42k</div></div>
   </div>
@@ -735,14 +760,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 </div>
 <footer class="site-footer">
   <div class="footer-left">Panorama Festival 2026 · Cave del Duca · Lecce · 14-15-16 agosto</div>
-  <div class="footer-right">DATI AL 6 LUGLIO 2026 · v40</div>
+  <div class="footer-right">DATI AL 6 LUGLIO 2026 · v42</div>
 </footer>
 
 <script>
 // Cumulativo totale venduto: 2026 vs 2025
 const labels=['21/05','22/05','23/05','24/05','25/05','26/05','27/05','28/05','29/05','30/05','31/05','01/06','02/06','03/06','04/06','05/06','06/06','07/06','08/06','09/06','10/06','11/06','12/06','13/06','14/06','15/06','16/06','17/06','18/06','19/06','20/06','21/06','22/06','23/06','24/06','25/06','26/06','27/06','28/06','29/06','30/06','01/07','02/07','03/07','04/07','05/07','06/07'];
 const a2026=[1737, 3101, 3504, 3778, 4021, 4265, 4488, 4627, 4791, 4934, 5068, 5200, 5354, 5471, 5682, 5762, 5885, 6013, 6152, 6342, 6450, 6545, 6650, 6729, 6807, 6912, 7090, 7231, 7476, 8415, 8791, 8932, 9059, 9237, 9368, 9484, 9621, 9808, 9949, 10097, 10294, 10456, 10624, 10806, 10964, 11116, 11307];
-const a2025=[468, 1407, 1614, 1743, 1856, 1955, 2066, 2152, 2284, 2388, 2487, 2553, 2610, 2706, 2873, 2971, 3069, 3151, 3241, 3353, 3539, 3755, 3898, 4049, 4171, 4283, 4501, 4816, 5048, 5217, 5345, 5526, 5661, 5865, 6056, 6254, 6647, 6965, 7206, 7517, 8795, 8975, 9150, 9330, 9515, 9700, 9885];
+const a2025=[468, 1407, 1614, 1743, 1856, 1955, 2066, 2152, 2284, 2388, 2487, 2553, 2610, 2706, 2873, 2971, 3069, 3151, 3241, 3353, 3539, 3755, 3898, 4049, 4171, 4283, 4501, 4816, 5048, 5217, 5345, 5526, 5661, 5865, 6056, 6254, 6647, 6965, 7206, 7517, 8795, 9104, 9309, 9473, 9614, 9809, 10001];
 new Chart(document.getElementById('chartMain').getContext('2d'),{
   type:'line',
   data:{labels,datasets:[
