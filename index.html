@@ -64,7 +64,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .chart-title{font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--text)}
 .chart-legend{display:flex;gap:16px;font-size:11px;color:var(--text2)}
 .legend-dot{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:middle}
-.chart-wrap{position:relative;height:210px}
+.chart-wrap{position:relative;height:210px} .chart-detail{margin-top:14px;padding:12px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;min-height:44px;display:flex;align-items:center;font-size:12px;color:var(--text2);transition:all 0.15s} .cd-hint{color:var(--text3);font-style:italic;font-size:11px} .cd-grid{display:flex;gap:20px;flex-wrap:wrap;width:100%;align-items:center} .cd-date{font-family:'DM Mono',monospace;font-weight:700;font-size:14px;color:var(--text);min-width:56px} .cd-item{display:flex;flex-direction:column;gap:1px} .cd-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);font-family:'DM Mono',monospace} .cd-val{font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px} .cd-26{color:#C0392B} .cd-25{color:#3B9BD6} .cd-delta{font-weight:600}
 .table-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
 .table-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
 .table-header-title{font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--text)}
@@ -258,6 +258,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     </div>
   </div>
   <div class="chart-wrap"><canvas id="chartMain"></canvas></div>
+  <div id="chartDetail" class="chart-detail">
+    <span class="cd-hint">Clicca un punto sulla curva per il dettaglio del giorno →</span>
+  </div>
 </div>
 
 <!-- CONFRONTO VS 2025 -->
@@ -680,7 +683,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 </div>
 <footer class="site-footer">
   <div class="footer-left">Panorama Festival 2026 · Cave del Duca · Lecce · 14-15-16 agosto</div>
-  <div class="footer-right">DATI AL 8 LUGLIO 2026 · v51</div>
+  <div class="footer-right">DATI AL 8 LUGLIO 2026 · v52</div>
 </footer>
 
 <script>
@@ -699,12 +702,39 @@ new Chart(document.getElementById('chartMain').getContext('2d'),{
       borderWidth:2.5,pointRadius:0,pointHoverRadius:4,fill:true,tension:0.25,order:2}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
+  onHover:(e,els)=>{e.native.target.style.cursor=els.length?'pointer':'default';},
+  onClick:(e,els,chart)=>{
+   if(!els.length)return;
+   const i=els[0].index;
+   const c26=a2026[i],c25=a2025[i];
+   const d26=i>0?c26-a2026[i-1]:c26;
+   const d25=i>0?c25-a2025[i-1]:c25;
+   const fmt=n=>n.toLocaleString('it-IT');
+   const sg=n=>(n>=0?'+':'')+fmt(n);
+   const dd26=c25>0?((c26/c25-1)*100).toFixed(0):'—';
+   const dailyDelta=d25!==0?((d26/d25-1)*100).toFixed(0):'—';
+   document.getElementById('chartDetail').innerHTML=
+    '<div class="cd-grid">'+
+    '<span class="cd-date">'+labels[i]+'</span>'+
+    '<div class="cd-item"><span class="cd-lbl">Venduto 2026</span><span class="cd-val cd-26">'+sg(d26)+' <span style=\'font-weight:400;color:var(--text3);font-size:10px\'>nel giorno</span></span></div>'+
+    '<div class="cd-item"><span class="cd-lbl">Venduto 2025</span><span class="cd-val cd-25">'+sg(d25)+'</span></div>'+
+    '<div class="cd-item"><span class="cd-lbl">Giorno vs 2025</span><span class="cd-val cd-delta" style="color:'+(d26>=d25?'#1A7A4A':'#C0392B')+'">'+(dailyDelta==='—'?'—':(d26>=d25?'+':'')+dailyDelta+'%')+'</span></div>'+
+    '<div class="cd-item"><span class="cd-lbl">Cumulato 2026</span><span class="cd-val cd-26">'+fmt(c26)+'</span></div>'+
+    '<div class="cd-item"><span class="cd-lbl">Cumulato 2025</span><span class="cd-val cd-25">'+fmt(c25)+'</span></div>'+
+    '<div class="cd-item"><span class="cd-lbl">Cum. vs 2025</span><span class="cd-val cd-delta" style="color:#1A7A4A">+'+dd26+'%</span></div>'+
+    '</div>';
+  },
     interaction:{mode:'index',intersect:false},
     plugins:{legend:{display:false},
       tooltip:{backgroundColor:'rgba(255,255,255,0.98)',borderColor:'rgba(0,0,0,0.08)',borderWidth:1,
         titleColor:'#1A1A18',bodyColor:'#6A6A68',padding:10,
         callbacks:{
-          label:c=>`${c.dataset.label}: ${c.parsed.y.toLocaleString('it-IT')} biglietti`,
+          label:c=>{
+      const arr=c.dataset.data;const i=c.dataIndex;
+      const daily=i>0?arr[i]-arr[i-1]:arr[i];
+      const sign=daily>=0?'+':'';
+      return `${c.dataset.label}: ${c.parsed.y.toLocaleString('it-IT')} tot · ${sign}${daily.toLocaleString('it-IT')} nel giorno`;
+     },
           afterBody:(items)=>{
             if(items.length<2)return[];
             const v26=items.find(i=>i.dataset.label.includes('2026'));
